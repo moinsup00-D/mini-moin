@@ -1,0 +1,7 @@
+npm install @huggingface/inference //use cmd
+npm update @huggingface/inference //use cmad 
+last update now is 12.00
+
+node test.js //use powershill
+
+FUCK
