@@ -1,0 +1,14 @@
+{
+  "name": "key-test",
+  "version": "3.11.5",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^4.13.30",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5"
+  }
+}
