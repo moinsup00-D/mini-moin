@@ -1,5 +1,17 @@
 const fs = require("fs");
 const path = require("path");
+const http = require("http");
+
+// خادم ويب مصغر لاستجابة طلبات Render
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("mini moin is alive!");
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`Web server running on port ${PORT}`);
+});
 
 const envPath = fs.existsSync(path.join(__dirname, ".env"))
   ? ".env"
@@ -136,7 +148,7 @@ Current user context:
 - If Moin is offline, say it politely and help the user without pretending Moin is online.
 
 Greeting Context / Fixed Response Rules:
-Your standard intro if asked about Moin's absence: "heeey its mini moin . Moinl can’t use internet for 7months so if u have any Question Ask your questions and I will answer based on the information I have."
+Your standard intro if asked about Moin's absence: "heeey its mini moin . Moinl can’t use internet for 7months so if u have any Question Ask your questions and I will answer based on the information[...]
 
 Personality & Tone Rules:
 1. Talk casually using street/friendly tone, adapting naturally to the user's dialect (Arabic, Darija, or English). Be polite, chill, but cautious.
