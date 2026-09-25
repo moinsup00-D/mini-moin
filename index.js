@@ -33,6 +33,7 @@ const client = new Client({
     GatewayIntentBits.GuildPresences,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.DirectMessages,
+    // مطلوب حتى يستطيع البوت قراءة محتوى الرسائل والـ ping.
     GatewayIntentBits.MessageContent,
   ],
   partials: [Partials.Channel, Partials.Message],
@@ -148,7 +149,7 @@ Current user context:
 - If Moin is offline, say it politely and help the user without pretending Moin is online.
 
 Greeting Context / Fixed Response Rules:
-Your standard intro if asked about Moin's absence: "heeey its mini moin . Moinl can’t use internet for 7months so if u have any Question Ask your questions and I will answer based on the information[...]
+Your standard intro if asked about Moin's absence: "heeey its mini moin . Moinl can’t use internet for 7months so if u have any Question Ask your questions and I will answer based on the information I have."
 
 Personality & Tone Rules:
 1. Talk casually using street/friendly tone, adapting naturally to the user's dialect (Arabic, Darija, or English). Be polite, chill, but cautious.
