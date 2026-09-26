@@ -21,20 +21,17 @@ const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 const RENDER_URL = process.env.RENDER_URL || "https://mini-moin.onrender.com";
 
-// ========================
-// 🌐 صفحة الويب الرئيسية
-// ========================
 app.get("/", (req, res) => {
   res.status(200).send(`
     <!DOCTYPE html>
-    <html lang="ar" dir="rtl">
+    <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Mini Moin - مساعد الذكاء الاصطناعي الذكي لسيرفرات ديسكورد">
+        <meta name="description" content="Mini Moin - Advanced AI Assistant for Discord Servers">
         <meta name="theme-color" content="#5865F2">
-        <title>Mini Moin Bot | مساعد AI ديسكورد</title>
-        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+        <title>Mini Moin Bot | AI Discord Assistant</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
         <style>
             * {
                 margin: 0;
@@ -55,7 +52,7 @@ app.get("/", (req, res) => {
             }
 
             body {
-                font-family: 'Tajawal', sans-serif;
+                font-family: 'Inter', sans-serif;
                 background: linear-gradient(135deg, var(--bg-dark) 0%, #161b22 100%);
                 color: var(--text-primary);
                 min-height: 100vh;
@@ -64,7 +61,6 @@ app.get("/", (req, res) => {
                 overflow-x: hidden;
             }
 
-            /* Animated Background */
             .bg-animation {
                 position: fixed;
                 top: 0;
@@ -92,7 +88,6 @@ app.get("/", (req, res) => {
                 66% { transform: translate(-20px, 30px); }
             }
 
-            /* Header */
             header {
                 padding: 20px;
                 text-align: center;
@@ -111,7 +106,6 @@ app.get("/", (req, res) => {
                 letter-spacing: 1px;
             }
 
-            /* Main Container */
             .container {
                 display: flex;
                 justify-content: center;
@@ -125,7 +119,6 @@ app.get("/", (req, res) => {
                 width: 100%;
             }
 
-            /* Card Styles */
             .card {
                 background: var(--bg-card);
                 border: 1px solid var(--border);
@@ -144,7 +137,6 @@ app.get("/", (req, res) => {
                 transform: translateY(-5px);
             }
 
-            /* Status Badge */
             .status-badge {
                 display: inline-flex;
                 align-items: center;
@@ -179,7 +171,6 @@ app.get("/", (req, res) => {
                 50% { opacity: 0.5; }
             }
 
-            /* Typography */
             .card h1 {
                 font-size: 2.5rem;
                 font-weight: 900;
@@ -198,7 +189,6 @@ app.get("/", (req, res) => {
                 font-size: 1.05rem;
             }
 
-            /* Features List */
             .features {
                 background: rgba(88, 101, 242, 0.05);
                 border: 1px solid rgba(88, 101, 242, 0.2);
@@ -222,7 +212,7 @@ app.get("/", (req, res) => {
             }
 
             .features li:before {
-                content: "✓";
+                content: "";
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -236,7 +226,6 @@ app.get("/", (req, res) => {
                 flex-shrink: 0;
             }
 
-            /* Buttons */
             .btn {
                 display: inline-flex;
                 align-items: center;
@@ -279,7 +268,6 @@ app.get("/", (req, res) => {
                 box-shadow: 0 10px 30px rgba(88, 101, 242, 0.2);
             }
 
-            /* Info Section */
             .info-section {
                 background: rgba(255, 0, 110, 0.05);
                 border-left: 4px solid var(--accent);
@@ -290,7 +278,6 @@ app.get("/", (req, res) => {
                 color: var(--text-secondary);
             }
 
-            /* Footer */
             footer {
                 text-align: center;
                 padding: 30px 20px;
@@ -324,7 +311,6 @@ app.get("/", (req, res) => {
                 color: var(--accent);
             }
 
-            /* Responsive */
             @media (max-width: 768px) {
                 .container {
                     flex-direction: column;
@@ -350,7 +336,6 @@ app.get("/", (req, res) => {
                 }
             }
 
-            /* Loading Animation */
             @keyframes shimmer {
                 0% { background-position: -1000px 0; }
                 100% { background-position: 1000px 0; }
@@ -371,90 +356,88 @@ app.get("/", (req, res) => {
         </div>
 
         <header>
-            <h1>🤖 Mini Moin Bot</h1>
+            <h1>Mini Moin Bot</h1>
         </header>
 
         <div class="container">
             <div class="card">
                 <div class="status-badge">
-                    <span class="dot"></span> الخدمة تعمل بنجاح (24/7)
+                    <span class="dot"></span> Service running successfully (24/7)
                 </div>
 
                 <h1>Mini Moin</h1>
-                <p>مساعد الذكاء الاصطناعي الذكي والمرح لسيرفرات ديسكورد. جاهز لخدمتك والتفاعل معك ومع أعضاء سيرفرك في أي وقت! 🚀</p>
+                <p>Advanced AI assistant for Discord servers. Ready to serve you and interact with you and your server members anytime!</p>
 
                 <div class="features">
-                    <li>💬 ذكاء اصطناعي متقدم Qwen 2.5</li>
-                    <li>🌍 دعم اللغات العربية والإنجليزية</li>
-                    <li>⚡ استجابة سريعة وفورية</li>
-                    <li>🛡️ آمن وموثوق 100%</li>
-                    <li>🎯 محادثات ذكية وطبيعية</li>
-                    <li>🔄 يعمل 24/7 بدون توقف</li>
+                    <li>Advanced AI Qwen 2.5</li>
+                    <li>Support for Arabic and English languages</li>
+                    <li>Fast and instant response</li>
+                    <li>Safe and 100% reliable</li>
+                    <li>Smart and natural conversations</li>
+                    <li>Works 24/7 without interruption</li>
                 </div>
 
                 <div class="info-section">
-                    ℹ️ البوت متصل ويعمل الآن. يمكنك إضافته لسيرفرك الآن والاستمتاع بخدماته المتميزة!
+                    INFO: The bot is connected and running. You can add it to your server now and enjoy its outstanding services!
                 </div>
 
                 <a href="https://dub.sh/mini-moin" target="_blank" class="btn">
-                    ➕ إضافة البوت إلى سيرفرك
+                    Add Bot to Your Server
                 </a>
                 <a href="https://discord.com" target="_blank" class="btn btn-secondary">
-                    💬 زر ديسكورد
+                    Discord Link
                 </a>
             </div>
 
             <div class="card">
-                <h1 style="font-size: 2rem; margin-bottom: 20px;">المميزات ✨</h1>
+                <h1 style="font-size: 2rem; margin-bottom: 20px;">Features</h1>
 
                 <div style="display: flex; flex-direction: column; gap: 20px;">
                     <div>
-                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">🧠 ذكاء متقدم</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">يستخدم نموذج Qwen 2.5 الأحدث من Hugging Face للإجابة الذكية والدقيقة.</p>
+                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">Advanced Intelligence</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Uses the latest Qwen 2.5 model from Hugging Face for smart and accurate answers.</p>
                     </div>
 
                     <div>
-                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">🌐 متعدد اللغات</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">يتحدث العربية والدارجة والإنجليزية بشكل طبيعي وذكي.</p>
+                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">Multilingual</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Speaks Arabic, Darija and English naturally and intelligently.</p>
                     </div>
 
                     <div>
-                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">💾 ذاكرة محادثات</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">يتذكر آخر المحادثات لإجابات أكثر سياقية وذكاء.</p>
+                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">Conversation Memory</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Remembers previous conversations for more contextual and intelligent answers.</p>
                     </div>
 
                     <div>
-                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">🔐 آمن وموثوق</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">بيانات آمنة وخصوصيتك محمية بأعلى المعايير.</p>
+                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">Safe and Reliable</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Secure data and your privacy protected to the highest standards.</p>
                     </div>
 
                     <div>
-                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">⚡ سريع جداً</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">استجابة فورية بدون تأخير أو بطء.</p>
+                        <h3 style="color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">Very Fast</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Instant response without any delay or slowness.</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <footer>
-            <p>Mini Moin Bot © 2026 | مساعد الذكاء الاصطناعي المتقدم</p>
+            <p>Mini Moin Bot (c) 2026 | Advanced AI Assistant</p>
             <div class="footer-links">
                 <a href="https://discord.com" target="_blank">Discord</a>
-                <a href="https://dub.sh/mini-moin" target="_blank">إضافة البوت</a>
-                <a href="#" target="_blank">الدعم الفني</a>
+                <a href="https://dub.sh/mini-moin" target="_blank">Add Bot</a>
+                <a href="#" target="_blank">Technical Support</a>
             </div>
-            <p style="margin-top: 15px; font-size: 0.85rem;">Powered by Veipex Studio • Made with ❤️</p>
+            <p style="margin-top: 15px; font-size: 0.85rem;">Powered by Veipex Studio</p>
         </footer>
 
         <script>
-            // تحسين الأداء والتفاعل
             document.querySelectorAll('.btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     console.log('Button clicked:', this.textContent);
                 });
             });
 
-            // تحديث حالة الاتصال
             setInterval(async () => {
                 try {
                     const response = await fetch('/health');
@@ -470,9 +453,6 @@ app.get("/", (req, res) => {
   `);
 });
 
-// ========================
-// 🏥 Health Check Endpoint
-// ========================
 app.get("/health", (req, res) => {
   res.status(200).json({
     status: "ok",
@@ -483,34 +463,28 @@ app.get("/health", (req, res) => {
 });
 
 const server = app.listen(PORT, () => {
-  console.log(`✅ HTTP server is running on port ${PORT}`);
-  console.log(`🌐 Web page available at: http://localhost:${PORT}`);
+  console.log(`HTTP server is running on port ${PORT}`);
+  console.log(`Web page available at: http://localhost:${PORT}`);
 });
 
 startKeepAlive();
 
-// ========================
-// 🔄 Self-Ping Keep-Alive
-// ========================
 function keepServerAlive() {
   setInterval(() => {
     https
       .get(RENDER_URL, (res) => {
         const timestamp = new Date().toISOString();
-        console.log(`[${timestamp}] 📡 Keep-Alive Ping - Status: ${res.statusCode}`);
+        console.log(`[${timestamp}] Keep-Alive Ping - Status: ${res.statusCode}`);
       })
       .on("error", (err) => {
-        console.error(`[Keep-Alive] ❌ Ping Error: ${err.message}`);
+        console.error(`[Keep-Alive] Ping Error: ${err.message}`);
       });
-  }, 5 * 60 * 1000); // كل 5 دقائق
+  }, 5 * 60 * 1000);
 }
 
 keepServerAlive();
-console.log(`🔄 Keep-Alive sistem started. Ping interval: every 5 minutes`);
+console.log("Keep-Alive system started. Ping interval: every 5 minutes");
 
-// ========================
-// 🤖 Discord Bot
-// ========================
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -554,16 +528,16 @@ const userMemory = new Map();
 let infoData = "";
 try {
   infoData = fs.readFileSync("info.txt", "utf8");
-  console.log("✅ تم تحميل ملف info.txt بنجاح.");
+  console.log("Successfully loaded info.txt file.");
 } catch (err) {
-  console.error("⚠️  لم يتم العثور على ملف info.txt");
+  console.error("info.txt file not found");
 }
 
 client.on("ready", () => {
-  console.log(`\n🎉 Discord Bot Status:`);
-  console.log(`   └─ Connected as: ${client.user.tag}`);
-  console.log(`   └─ Bot ID: ${client.user.id}`);
-  console.log(`   └─ Time: ${new Date().toISOString()}\n`);
+  console.log(`Discord Bot Status:`);
+  console.log(`Connected as: ${client.user.tag}`);
+  console.log(`Bot ID: ${client.user.id}`);
+  console.log(`Time: ${new Date().toISOString()}`);
 });
 
 client.on("messageCreate", async (message) => {
@@ -595,7 +569,7 @@ client.on("messageCreate", async (message) => {
 
   if (MOIN_ID && message.mentions.has(MOIN_ID)) {
     console.log(
-      `📢 Moin mention detected. Status: ${moinStatus}. User: ${speakerName}.`
+      `Moin mention detected. Status: ${moinStatus}. User: ${speakerName}.`
     );
 
     if (moinStatus === "online" && !mentionsBot) {
@@ -611,7 +585,6 @@ client.on("messageCreate", async (message) => {
       );
       isReplyToMoin = referencedMsg.author.id === MOIN_ID;
     } catch (e) {
-      // تجاهل أي خطأ في قراءة الرسالة المرجعية
     }
   }
 
@@ -636,20 +609,20 @@ Current user context:
 - If Moin is offline, say it politely and help the user without pretending Moin is online.
 
 Greeting Context / Fixed Response Rules:
-Your standard intro if asked about Moin's absence: "heeey its mini moin . Moinl can't use internet for 7months so if u have any Question Ask your questions and I will answer based on the information[...]
+Your standard intro if asked about Moin's absence: "heeey its mini moin. Moinl can't use internet for 7 months so if you have any questions ask and I will answer based on the information I have."
 
 Personality & Tone Rules:
-1. Talk casually using street/friendly tone, adapting naturally to the user's dialect (Arabic, Darija, or English). Be polite, chill, but cautious.
-2. You can answer general topics (e.g. how to cook lasagna, general tech questions, everyday advice).
+1. Talk casually using friendly tone, adapting naturally to the user's dialect. Be polite, chill, but cautious.
+2. You can answer general topics like how to cook lasagna, general tech questions, everyday advice.
 3. If the user mentions their name or a conversation context, refer to them naturally by that name.
-4. If someone asks how someone is doing, respond warmly and empathetically: "Hey ${speakerName}, I'm good, thanks for asking. How are you doing today?"
-5. If someone asks about Moin's wellbeing, answer kindly and clearly: "Moin is doing okay, and I'm here to help with anything you need."
+4. If someone asks how someone is doing, respond warmly and empathetically: "Hey ${speakerName}, I am good, thanks for asking. How are you doing today?"
+5. If someone asks about Moin's wellbeing, answer kindly and clearly: "Moin is doing okay, and I am here to help with anything you need."
 6. If the user is feeling down or asks if someone is okay, be supportive and comforting without being dramatic.
 
 STRICT Boundaries & Security Rules:
 1. NEVER reveal Moin's real full name, exact physical home address, or private sensitive identity details under any circumstances.
 2. NEVER answer or facilitate illegal, dangerous, or harmful queries.
-3. If asked about something private regarding Moin that is not in the info below, respond casually and politely that you don't have those details.
+3. If asked about something private regarding Moin that is not in the info below, respond casually and politely that you do not have those details.
 
 Knowledge Base provided by Moin:
 ${infoData}`;
@@ -682,24 +655,24 @@ ${infoData}`;
 
     userMemory.set(userId, history);
   } catch (error) {
-    console.error("❌ خطأ:", error.message);
+    console.error("Error:", error.message);
     message.reply(
-      "heeey its mini moin . Moinl can't use internet for 7months so if u have any Question Ask your questions and I will answer based on the information I have."
+      "heeey its mini moin. Moinl can't use internet for 7 months so if you have any questions ask and I will answer based on the information I have."
     );
   }
 });
 
 client.login(process.env.DISCORD_TOKEN).catch((error) => {
-  console.error("❌ Failed to login to Discord:", error);
+  console.error("Failed to login to Discord:", error);
   server.close(() => process.exit(1));
 });
 
 process.on("SIGINT", () => {
-  console.log("\n🛑 Shutting down gracefully...");
+  console.log("Shutting down gracefully...");
   server.close(() => process.exit(0));
 });
 
 process.on("SIGTERM", () => {
-  console.log("\n🛑 Shutting down gracefully...");
+  console.log("Shutting down gracefully...");
   server.close(() => process.exit(0));
 });
