@@ -33,8 +33,31 @@ A simple Discord bot powered by Node.js and Hugging Face Inference.
    npm start
    ```
 
-## Notes
+## Render deployment
+
+This project is ready to run on Render as a web service.
+
+### Required environment variables in Render
+
+Set these in the Render dashboard:
+
+```env
+DISCORD_TOKEN=your_discord_token_here
+HF_TOKEN=your_huggingface_token_here
+MOIN_USER_ID=your_moin_user_id_here
+PORT=10000
+```
+
+### Render settings
+
+- Type: Web Service
+- Build Command: `npm install`
+- Start Command: `npm start`
+- Health Check Path: `/health`
+
+### Notes
 
 - Do not upload your `.env` file to GitHub.
 - Keep all sensitive tokens in local environment variables only.
 - The bot reads the local knowledge base from `info.txt`.
+- Render expects an HTTP endpoint, so the app exposes `/health` for monitoring.
