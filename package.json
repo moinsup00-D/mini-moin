@@ -1,0 +1,34 @@
+{
+  "name": "mini-moin-bot",
+  "version": "3.12.0",
+  "description": "Advanced AI Discord bot that learns from conversations",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "ai",
+    "chatbot",
+    "learning",
+    "qwen",
+    "huggingface"
+  ],
+  "author": "MOIN (Creator)",
+  "license": "MIT",
+  "dependencies": {
+    "@huggingface/inference": "^4.13.30",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.22.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
